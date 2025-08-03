@@ -1,26 +1,27 @@
+import { List, ListItem, Typography } from "@mui/material";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
-    fetch('https://localhost:5001/api/Activities')
-      .then(response => response.json())
-      .then(data => setActivities(data))
+    axios.get<Activity[]>('https://localhost:5001/api/Activities')
+      .then(response => setActivities(response.data))
 
     return () => { }
   }, [])
 
   const title = 'Welcome to Reactivities';
   return (
-    <div>
-      <h3 className="app" style={{ color: 'red' }}>{title}</h3>
-      <ul>
+    <>
+      <Typography variant='h3'>{title}</Typography>
+      <List>
         {activities.map((activity) => (
-          <li key={activity.id}>{activity.title}</li>
+          <ListItem key={activity.id}>{activity.title}</ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </>
   )
 }
 

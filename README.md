@@ -17,3 +17,5 @@ dotnet ef database update -p Persistence -s API                     //DB migrati
 dotnet ef database drop -p Persistence -s API                       //DB drop table
 
 dotnet new gitignore        // add git ignore on project
+
+npm install -D vite-plugin-mkcert //create local certificate authority
