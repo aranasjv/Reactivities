@@ -18,4 +18,12 @@ dotnet ef database drop -p Persistence -s API                       //DB drop ta
 
 dotnet new gitignore        // add git ignore on project
 
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass // admin on powershell
 npm install -D vite-plugin-mkcert //create local certificate authority
+
+npm install axios //install axios for fetch api
+
+// install material ui
+npm install @mui/icons-material@^6.0.0
+npm install @fontsource/roboto
+npm install @mui/material@^6.0.0 @emotion/react @emotion/styled
