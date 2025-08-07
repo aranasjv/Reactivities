@@ -486,3 +486,5 @@ $RECYCLE.BIN/
 API/reactivities.db
 API/appsettings.Development.json
 API/appsettings.json
+/API/reactivities.db-shm
+/API/reactivities.db-wal
