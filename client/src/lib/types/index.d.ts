@@ -1,4 +1,4 @@
-type Activity = {
+export type Activity = {
     id: string
     title: string
     date: string
