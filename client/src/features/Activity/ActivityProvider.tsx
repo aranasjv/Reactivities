@@ -33,6 +33,10 @@ export const ActivityProvider = ({ children }: Props) => {
 
   // Open form for editing or creating a new activity
   const handleOpenForm = (id?: string) => {
+    if(editMode){
+      return; // Prevent opening form if already in edit mode
+    }
+    setCategory(""); // Reset category when opening form
     if (id) {
       handleSelectActivity(id);
       const activity = activities.find(activity => activity.id === id);

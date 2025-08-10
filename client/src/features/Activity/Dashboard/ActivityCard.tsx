@@ -34,8 +34,10 @@ export default function ActivityCard({ activity }: Props) {
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Chip label={activity.category} variant="outlined" />
         <Box display={"flex"} gap={2}>
-          <Button variant="outlined" color="secondary" size="medium" onClick={handleCloseForm}> Cancel </Button>
-          <Button variant="outlined" color="primary" size="medium" onClick={() => handleSelectActivity(activity.id)}> Edit </Button>
+          <Button variant="outlined" color="primary" size="medium" 
+          onClick={() => {
+            handleCloseForm();
+            handleSelectActivity(activity.id); }}> View </Button>
           <Button variant="outlined" color="error" size="medium" onClick={() => handleDelete(activity.id)}> Delete </Button>
         </Box>
       </CardActions>
