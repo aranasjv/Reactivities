@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -14,9 +15,11 @@ type Props = {
 };
 
 export default function ActivityCard({ activity }: Props) {
-  const { handleSelectActivity,
-    handleCloseForm    
-   } = useActivityContext(); // Access directly
+  const {
+    handleSelectActivity,
+    handleCloseForm,
+    handleDelete
+  } = useActivityContext(); // Access directly
 
   return (
     <Card sx={{ borderRadius: 3, padding: 2, marginBottom: 2 }}>
@@ -30,16 +33,11 @@ export default function ActivityCard({ activity }: Props) {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Chip label={activity.category} variant="outlined" />
-        <Button
-      onClick={() => {
-        handleSelectActivity(activity.id);
-        handleCloseForm();
-        }}
-          size="medium"
-          variant="contained"
-        >
-          View
-        </Button>
+        <Box display={"flex"} gap={2}>
+          <Button variant="outlined" color="secondary" size="medium" onClick={handleCloseForm}> Cancel </Button>
+          <Button variant="outlined" color="primary" size="medium" onClick={() => handleSelectActivity(activity.id)}> Edit </Button>
+          <Button variant="outlined" color="error" size="medium" onClick={() => handleDelete(activity.id)}> Delete </Button>
+        </Box>
       </CardActions>
     </Card>
   );
