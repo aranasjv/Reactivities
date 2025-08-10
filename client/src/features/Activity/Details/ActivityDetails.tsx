@@ -4,7 +4,8 @@ import { useActivityContext } from "../useActivityContext";
 export default function ActivityDetails() {
         const {
             selectedActivity,
-            handleCancelSelectActivity
+            handleCancelSelectActivity,
+            handleOpenForm
         } = useActivityContext();
     
     return (
@@ -16,7 +17,8 @@ export default function ActivityDetails() {
                 <Typography variant="body1">{selectedActivity?.description}</Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button color="primary" variant="contained">Edit</Button>
+                <Button color="primary" variant="contained" onClick={() => {
+                    handleOpenForm(selectedActivity?.id)}}> Edit</Button>
                 <Button onClick={handleCancelSelectActivity} color="inherit" variant="outlined">Cancel</Button>
             </CardActions>
         </Card>

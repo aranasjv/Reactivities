@@ -1,7 +1,13 @@
 import { Group } from "@mui/icons-material";
 import { Box, AppBar, Toolbar, Typography, Button, Container, MenuItem } from "@mui/material";
+import { useActivityContext } from "../../features/Activity/useActivityContext";
 
 export default function NavBar() {
+
+  const {
+    handleOpenForm
+  } = useActivityContext();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{
@@ -26,11 +32,12 @@ export default function NavBar() {
                 Contact
               </MenuItem>
             </Box>
-            <Button size="large" variant="contained" color="warning"> Create Activity</Button>
+            <Button size="large" variant="contained" color="warning" onClick={() => handleOpenForm()}> Create Activity</Button>
           </Toolbar>
         </Container>
       </AppBar>
     </Box>
   )
 }
+
 

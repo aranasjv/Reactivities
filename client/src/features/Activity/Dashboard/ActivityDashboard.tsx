@@ -3,11 +3,13 @@ import { Grid2 } from "@mui/material";
 import ActivityList from "./ActivityList";
 import ActivityDetails from "../Details/ActivityDetails";
 import { useActivityContext } from "../useActivityContext";
+import ActivityForm from "../Form/ActivityForm";
 
 
 export default function ActivityDashboard() {
     const {
-        selectedActivity
+        selectedActivity,
+        editMode
     } = useActivityContext();
 
     return (
@@ -16,9 +18,11 @@ export default function ActivityDashboard() {
                 <ActivityList />
             </Grid2>
             <Grid2 size={5}>
-                {selectedActivity &&
+                {selectedActivity && !editMode &&
                     <ActivityDetails />
                 }
+                 {editMode &&
+                    <ActivityForm />}
             </Grid2>
         </Grid2>
     );
