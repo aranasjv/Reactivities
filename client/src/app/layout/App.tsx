@@ -1,19 +1,19 @@
 import { Box, Container, CssBaseline } from "@mui/material";
 import NavBar from "./NavBar";
 import ActivityDashboard from "../../features/Activity/Dashboard/ActivityDashboard";
-import { ActivityProvider } from "../../features/Activity/ActivityProvider";
+import { ActivityProvider } from "../../features/Activity/Context/ActivityProvider";
 
 function App() {
   return (
-    <ActivityProvider>
-      <Box sx={{ bgcolor: '#eeeeee' }}>
-        <CssBaseline />
+    <Box sx={{ bgcolor: '#eeeeee', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <CssBaseline />
+      <ActivityProvider>
         <NavBar />
         <Container maxWidth="xl" sx={{ marginTop: 1 }}>
           <ActivityDashboard />
         </Container>
-      </Box>
-    </ActivityProvider>
+      </ActivityProvider>
+    </Box>
   );
 }
 

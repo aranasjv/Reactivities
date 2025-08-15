@@ -27,3 +27,7 @@ npm install axios //install axios for fetch api
 npm install @mui/icons-material@^6.0.0
 npm install @fontsource/roboto
 npm install @mui/material@^6.0.0 @emotion/react @emotion/styled
+
+//React Query and dev tools
+npm i @tanstack/react-query
+npm i @tanstack/react-query-devtools

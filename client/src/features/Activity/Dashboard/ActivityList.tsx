@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import ActivityCard from "./ActivityCard";
-import { useActivityContext } from "../useActivityContext";
+import { useActivityContext } from "../Context/useActivityContext";
 
 export default function ActivityList() {
   const { activities } = useActivityContext(); // Removed handleSelectActivity

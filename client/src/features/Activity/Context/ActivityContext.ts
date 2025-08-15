@@ -1,15 +1,17 @@
-// Updated ActivityContext.ts
 import { createContext, type FormEvent } from "react";
-import type { Activity } from "../../lib/types";
+import type { Activity } from "../../../lib/types";
 import type { SelectChangeEvent } from "@mui/material";
 
 export type ActivityContextType = {
   activities: Activity[];
-  setActivities: React.Dispatch<React.SetStateAction<Activity[]>>;
+  isPendingSelectAll: boolean;
+  isPendingUpdate: boolean;
+  isPendingCreate: boolean;
+  isPendingDelete: boolean;
   selectedActivity: Activity | undefined;
   editMode: boolean;
   handleSelectActivity: (id: string) => void;
-  handleCancelSelectActivity: ()  => void;
+  handleCancelSelectActivity: () => void;
   handleOpenForm: (id?: string) => void;
   handleCloseForm: () => void;
   handleSubmitForm: (event: FormEvent<HTMLFormElement>) => void;

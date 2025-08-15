@@ -2,7 +2,7 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, TextFiel
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { useActivityContext } from "../useActivityContext";
+import { useActivityContext } from "../Context/useActivityContext";
 import dayjs from 'dayjs';
 import React from "react";
 
@@ -13,12 +13,14 @@ export default function ActivityForm() {
         handleSubmitForm,
         categories,
         category,
-        handleCategoryChange
+        handleCategoryChange,
+        isPendingUpdate,
+        isPendingCreate
     } = useActivityContext();
 
-      const [dateValue, setValue] = React.useState(
-    selectedActivity?.date ? dayjs(selectedActivity.date) : null
-  );
+    const [dateValue, setValue] = React.useState(
+        selectedActivity?.date ? dayjs(selectedActivity.date) : null
+    );
 
 
     return (
@@ -56,18 +58,18 @@ export default function ActivityForm() {
                 </FormControl>
 
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker
-                    label="Date"
-                    name="date"
-                    value={dateValue}
-                    onChange={(newValue) => setValue(newValue)}
-                    slotProps={{
-                    textField: {
-                        fullWidth: true,
-                        variant: 'outlined',
-                    },
-                    }}
-                />
+                    <DateTimePicker
+                        label="Date"
+                        name="date"
+                        value={dateValue}
+                        onChange={(newValue) => setValue(newValue)}
+                        slotProps={{
+                            textField: {
+                                fullWidth: true,
+                                variant: 'outlined',
+                            },
+                        }}
+                    />
                 </LocalizationProvider>
 
                 <TextField name="city" label="City" defaultValue={selectedActivity?.city} />
@@ -77,7 +79,7 @@ export default function ActivityForm() {
                     <Button color="inherit" onClick={handleCloseForm}>
                         Cancel
                     </Button>
-                    <Button color="success" type="submit" variant="contained">
+                    <Button loading={isPendingUpdate || isPendingCreate} color="success" type="submit" variant="contained">
                         Submit
                     </Button>
                 </Box>

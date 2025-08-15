@@ -8,7 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import type { Activity } from "../../../lib/types";
-import { useActivityContext } from "../useActivityContext";
+import { useActivityContext } from "../Context/useActivityContext";
+
 
 type Props = {
   activity: Activity;
@@ -18,8 +19,9 @@ export default function ActivityCard({ activity }: Props) {
   const {
     handleSelectActivity,
     handleCloseForm,
-    handleDelete
-  } = useActivityContext(); // Access directly
+    handleDelete,
+    isPendingDelete
+    } = useActivityContext(); // Access directly
 
   return (
     <Card sx={{ borderRadius: 3, padding: 2, marginBottom: 2 }}>
@@ -34,11 +36,11 @@ export default function ActivityCard({ activity }: Props) {
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Chip label={activity.category} variant="outlined" />
         <Box display={"flex"} gap={2}>
-          <Button variant="outlined" color="primary" size="medium" 
+          <Button variant="outlined" color="primary" size="medium" loading={isPendingDelete}
           onClick={() => {
             handleCloseForm();
             handleSelectActivity(activity.id); }}> View </Button>
-          <Button variant="outlined" color="error" size="medium" onClick={() => handleDelete(activity.id)}> Delete </Button>
+          <Button loading={isPendingDelete} variant="outlined" color="error" size="medium" onClick={() => handleDelete(activity.id)}> Delete </Button>
         </Box>
       </CardActions>
     </Card>

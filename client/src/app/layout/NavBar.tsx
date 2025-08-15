@@ -1,6 +1,6 @@
 import { Group } from "@mui/icons-material";
 import { Box, AppBar, Toolbar, Typography, Button, Container, MenuItem } from "@mui/material";
-import { useActivityContext } from "../../features/Activity/useActivityContext";
+import { useActivityContext } from "../../features/Activity/Context/useActivityContext";
 
 export default function NavBar() {
 
