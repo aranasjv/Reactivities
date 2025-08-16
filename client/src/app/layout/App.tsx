@@ -1,18 +1,15 @@
 import { Box, Container, CssBaseline } from "@mui/material";
 import NavBar from "./NavBar";
-import ActivityDashboard from "../../features/Activity/Dashboard/ActivityDashboard";
-import { ActivityProvider } from "../../features/Activity/Context/ActivityProvider";
+import { Outlet } from "react-router";
 
 function App() {
   return (
-    <Box sx={{ bgcolor: '#eeeeee', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ bgcolor: '#eeeeee', minHeight: '100vh' }}>
       <CssBaseline />
-      <ActivityProvider>
         <NavBar />
-        <Container maxWidth="xl" sx={{ marginTop: 1 }}>
-          <ActivityDashboard />
+        <Container maxWidth="xl" sx={{ marginTop: 3 }}>
+            <Outlet />
         </Container>
-      </ActivityProvider>
     </Box>
   );
 }

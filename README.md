@@ -31,3 +31,6 @@ npm install @mui/material@^6.0.0 @emotion/react @emotion/styled
 //React Query and dev tools
 npm i @tanstack/react-query
 npm i @tanstack/react-query-devtools
+
+//install react router
+npm i react-router

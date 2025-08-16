@@ -1,15 +1,22 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ActivityCard from "./ActivityCard";
-import { useActivityContext } from "../Context/useActivityContext";
+import { useActivities } from "../../../lib/types/hooks/useActivities";
 
 export default function ActivityList() {
-  const { activities } = useActivityContext(); // Removed handleSelectActivity
+  const {
+    activities,
+    isPendingSelectAll
+  } = useActivities();
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-      {activities.map((activity) => (
-        <ActivityCard key={activity.id} activity={activity} />
-      ))}
-    </Box>
+    !activities || isPendingSelectAll ? (
+        <Typography>Loading...</Typography>
+    ) : (
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        {activities.map((activity) => (
+          <ActivityCard key={activity.id} activity={activity} />
+        ))}
+      </Box>
+    )
   );
 }

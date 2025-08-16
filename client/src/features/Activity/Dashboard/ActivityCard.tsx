@@ -5,10 +5,11 @@ import {
   CardActions,
   CardContent,
   Chip,
-  Typography,
+Typography,
 } from "@mui/material";
 import type { Activity } from "../../../lib/types";
-import { useActivityContext } from "../Context/useActivityContext";
+import { useActivities } from "../../../lib/types/hooks/useActivities";
+import { Link } from "react-router";
 
 
 type Props = {
@@ -17,11 +18,9 @@ type Props = {
 
 export default function ActivityCard({ activity }: Props) {
   const {
-    handleSelectActivity,
-    handleCloseForm,
-    handleDelete,
+    deleteActivity,
     isPendingDelete
-    } = useActivityContext(); // Access directly
+  } = useActivities(); // Access directly
 
   return (
     <Card sx={{ borderRadius: 3, padding: 2, marginBottom: 2 }}>
@@ -36,11 +35,10 @@ export default function ActivityCard({ activity }: Props) {
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Chip label={activity.category} variant="outlined" />
         <Box display={"flex"} gap={2}>
-          <Button variant="outlined" color="primary" size="medium" loading={isPendingDelete}
-          onClick={() => {
-            handleCloseForm();
-            handleSelectActivity(activity.id); }}> View </Button>
-          <Button loading={isPendingDelete} variant="outlined" color="error" size="medium" onClick={() => handleDelete(activity.id)}> Delete </Button>
+          <Button component={Link} to={`/activity/${activity.id}`} variant="outlined" color="primary" size="medium" loading={isPendingDelete}>
+            View
+          </Button>
+          <Button loading={isPendingDelete} variant="outlined" color="error" size="medium" onClick={() => deleteActivity(activity.id)}> Delete </Button>
         </Box>
       </CardActions>
     </Card>
