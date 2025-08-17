@@ -1,17 +1,18 @@
 // src/features/Activity/Dashboard/ActivityDashboard.tsx
-import { Grid2, } from "@mui/material";
+import { Grid } from "@mui/material";
 import ActivityList from "./ActivityList";
+import ActivityFilters from "./ActivityFilters";
 
 export default function ActivityDashboard() {
     return (
 
-            <Grid2 container spacing={3}>
-                <Grid2 size={7}>
+            <Grid container spacing={3}>
+                <Grid size={7}>
                     <ActivityList />
-                </Grid2>
-                <Grid2 size={5}>
-                    Activity Filter Pending
-                </Grid2>
-            </Grid2>
+                </Grid>
+                <Grid size={5}>
+                    <ActivityFilters />
+                </Grid>
+            </Grid>
     );
 }

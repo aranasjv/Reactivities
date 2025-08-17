@@ -23,6 +23,9 @@ npm install -D vite-plugin-mkcert //create local certificate authority
 
 npm install axios //install axios for fetch api
 
+//MUi Material
+npm install @mui/material@latest @mui/icons-material@latest @mui/lab@latest @mui/x-date-pickers@latest @mui/x-date-pickers-pro@latest
+
 // install material ui
 npm install @mui/icons-material@^6.0.0
 npm install @fontsource/roboto
@@ -34,3 +37,6 @@ npm i @tanstack/react-query-devtools
 
 //install react router
 npm i react-router
+
+// for date formats
+npm install date-fns 
