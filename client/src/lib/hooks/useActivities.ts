@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { Activity } from "..";
-import agent from "../../agent";
+import agent from "../agent";
+import type { Activity } from "../types";
 
 export const useActivities = (id?: string) => {
 
@@ -12,7 +12,8 @@ export const useActivities = (id?: string) => {
       const response = await agent.get<Activity[]>("/activities");
       return response.data;
     }, 
-    enabled: !id
+    enabled: !id && location.pathname === '/activities',
+    staleTime: 1000 * 60 * 5
   });
 
   const { data: activity, isLoading: isLoadingActivityById } = useQuery({

@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState, type FormEvent } from "react";
-import { useActivities } from "../../../lib/types/hooks/useActivities";
+import { useActivities } from "../../../lib/hooks/useActivities";
 import { Link, useNavigate, useParams } from "react-router";
 import type { Activity } from "../../../lib/types";
 
