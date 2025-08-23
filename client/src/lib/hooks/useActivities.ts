@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import agent from "../agent";
 import type { Activity } from "../types";
+import agent from "../api/agent";
 
 export const useActivities = (id?: string) => {
 

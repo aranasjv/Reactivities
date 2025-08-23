@@ -1,5 +1,9 @@
+using API.Middleware;
+using Application.Activities.Commands;
 using Application.Activities.Queries;
+using Application.Activities.Validators;
 using Application.Core;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -14,6 +18,7 @@ builder.Services.AddDbContext<AppDBContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+
 // Add CORS policy to allow requests from React frontend
 builder.Services.AddCors(options =>
 {
@@ -25,14 +30,29 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>());
+// MediatR and validator
+builder.Services.AddMediatR(
+    cfg =>
+    {
+        cfg.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>();
+        cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+    }
+);
+
+builder.Services.AddTransient<ExceptionMiddleware>();
+
+// Automapper
 builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddProfile<MappingProfiles>();
 });
 
+builder.Services.AddValidatorsFromAssemblyContaining<CreateActivityValidator>();
 
 var app = builder.Build();
+
+// use middleware
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

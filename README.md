@@ -43,3 +43,6 @@ npm install date-fns
 
 //Mobx client side state
 npm install mobx mobx-react-lite 
+
+// React Toatify
+npm install react-toastify
